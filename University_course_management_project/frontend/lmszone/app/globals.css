@@ -1,0 +1,446 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --teal: #0d6e64;
+  --teal-dark: #0a5a51;
+  --teal-deeper: #0a3330;
+  --orange: #f59e0b;
+  --orange-dark: #d97706;
+
+  /* Light Mode Surfaces */
+  --bg-main: #f8fffe;
+  --bg-card: #ffffff;
+  --border-subtle: #ccfbf1;
+  /* teal-100 */
+  --text-main: #1a2e2b;
+  --text-muted: #64748b;
+}
+
+.dark {
+  --bg-main: #060d0c;
+  --bg-card: #0c1615;
+  --border-subtle: #0f2926;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Global Dark Mode Overrides for hardcoded classes */
+.dark .bg-white,
+.dark .bg-teal-50,
+.dark .bg-teal-100,
+.dark .bg-gray-50,
+.dark .bg-gray-100,
+.dark .bg-slate-50,
+.dark .bg-slate-100,
+.dark .bg-amber-50,
+.dark .bg-amber-100,
+.dark .bg-blue-50,
+.dark .bg-blue-100,
+.dark .bg-green-50,
+.dark .bg-green-100,
+.dark .bg-indigo-50,
+.dark .bg-indigo-100,
+.dark .bg-red-50,
+.dark .bg-red-100,
+.dark .bg-purple-50,
+.dark .bg-purple-100,
+.dark .bg-[#f8fffe],
+.dark [class*="bg-gray-50"],
+.dark [class*="bg-gray-100"],
+.dark [class*="bg-teal-50"],
+.dark [class*="bg-teal-100"],
+.dark [class*="bg-slate-50"],
+.dark [class*="bg-slate-100"],
+.dark [class*="bg-blue-50"],
+.dark [class*="bg-indigo-50"] {
+  background-color: var(--bg-card) !important;
+}
+
+/* Fix for inputs explicitly */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.6;
+}
+
+/* Override focus and hover background variations */
+.dark .hover\:bg-gray-50:hover,
+.dark .hover\:bg-teal-50:hover,
+.dark .focus\:bg-white:focus,
+.dark .focus\:bg-gray-50:focus {
+  background-color: var(--bg-main) !important;
+}
+
+/* Override focus backgrounds which are often white */
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  background-color: var(--bg-card) !important;
+  border-color: #0d9488 !important;
+  /* teal-600 */
+}
+
+.dark .text-gray-950,
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-teal-800,
+.dark .text-teal-900,
+.dark .text-gray-600 {
+  color: var(--text-main) !important;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: var(--text-muted) !important;
+}
+
+/* Border overrides - include more tags and patterns */
+.dark [class*="border-gray-"],
+.dark [class*="border-teal-"],
+.dark [class*="border-slate-"],
+.dark [class*="border-amber-"],
+.dark [class*="border-blue-"],
+.dark [class*="border-indigo-"] {
+  border-color: var(--border-subtle) !important;
+}
+
+.dark .divide-teal-50>*,
+.dark .divide-teal-100>*,
+.dark .divide-gray-50>*,
+.dark .divide-gray-100>* {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Specifically fix the "Issue Section" / Amber alerts (often used for warnings/out of scope) */
+.dark .bg-amber-50,
+.dark .bg-amber-100 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+.dark .text-amber-800,
+.dark .text-amber-700,
+.dark .text-amber-900 {
+  color: #fbbf24 !important;
+}
+
+/* Red alerts / issues / error messages */
+.dark .bg-red-50,
+.dark .bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.dark .text-red-800,
+.dark .text-red-700,
+.dark .text-red-900 {
+  color: #f87171 !important;
+}
+
+/* Green feedback areas */
+.dark .bg-green-50,
+.dark .bg-green-100 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+.dark .text-green-800,
+.dark .text-green-700,
+.dark .text-green-900 {
+  color: #34d399 !important;
+}
+
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0fdfa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 3px;
+}
+
+/* Utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.bg-teal-gradient {
+  background: linear-gradient(135deg, #0d6e64 0%, #0a3330 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0d6e64, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(13, 110, 100, 0.15);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass {
+  background: rgba(15, 25, 23, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(circle, #0d6e6430 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Animated gradient border */
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: #0d9488;
+  }
+
+  50% {
+    border-color: #f59e0b;
+  }
+}
+
+.border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* Page transitions */
+.page-enter {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+}
+
+.badge-teal {
+  @apply bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300;
+}
+
+.badge-orange {
+  @apply bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300;
+}
+
+.badge-red {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300;
+}
+
+.badge-gray {
+  @apply bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300;
+}
+
+/* Grade colors */
+.grade-a {
+  color: #16a34a;
+}
+
+.grade-b {
+  color: #0d9488;
+}
+
+.grade-c {
+  color: #d97706;
+}
+
+.grade-d {
+  color: #ea580c;
+}
+
+.grade-f {
+  color: #dc2626;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  ring-color: #0d9488;
+}
+
+/* Standardized surface components */
+.card-main {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  /* 24px */
+}
+
+/* Table styles */
+.data-table {
+  @apply w-full text-sm;
+}
+
+.data-table thead th {
+  @apply text-left py-3 px-4 font-semibold text-teal-800 bg-teal-50 dark:text-teal-200 dark:bg-teal-900/40 first:rounded-tl-xl last:rounded-tr-xl;
+}
+
+.data-table tbody tr {
+  @apply border-b border-teal-50 dark:border-teal-900/30 hover:bg-teal-50/50 dark:hover:bg-teal-900/20 transition-colors;
+}
+
+.data-table tbody td {
+  @apply py-3 px-4;
+  color: var(--text-main);
+}
+
+/* @@@ PROFESSIONAL PRINT STYLES @@@ */
+@media print {
+
+  /* Hide UI elements */
+  aside,
+  nav,
+  header,
+  footer,
+  .print\:hidden,
+  button,
+  .back-button,
+  .download-button {
+    display: none !important;
+  }
+
+  /* Reset layout for paper */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  /* Paper containers */
+  .rounded-3xl,
+  .rounded-2xl {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Assessment Header specifically for Print */
+  .assessment-print-header {
+    display: block !important;
+    border-bottom: 2px solid black;
+    margin-bottom: 30pt;
+    padding-bottom: 10pt;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Ensure colors are printable */
+  .bg-white {
+    background: white !important;
+  }
+
+  .text-gray-900 {
+    color: black !important;
+  }
+
+  .text-teal-600,
+  .text-blue-600 {
+    color: black !important;
+    font-weight: bold;
+  }
+
+  /* Question blocks */
+  .pb-8 {
+    page-break-inside: avoid;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20pt;
+  }
+
+  /* Show answers on teacher print but in a simple format */
+  .print-answer {
+    color: #444 !important;
+    font-style: italic;
+    border: 1px solid #ccc;
+    padding: 5pt;
+    margin-top: 5pt;
+  }
+}
+
+.print-only {
+  display: none;
+}
